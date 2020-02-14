@@ -5,23 +5,36 @@ require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
+const mysql = require('mysql');
 
-// custom user modules
+// custom models
 const db = require('./config/db.config');
+const dbTable = require(`./controllers/dbtable.controllers`);
+
+// creating MySQL, connection and creating db table if not exists.
+// usa db
+dbTable.createDbSetup(db.con1);
+// gh db
+dbTable.createDbSetup(db.con2);
+// china db
+dbTable.createDbSetup(db.con3);
 
 // creating connection to mongoDB using mongoose
 mongoose.Promise = global.Promise;
-const connectDB = () => {
-mongoose.connect(db.mongoDBUrl, db.mongoDBOptions).catch((err) => {
-    res.send({info: `Problem with database connection.`});
+const connectDB = async () => {
+mongoose.connect(db.mongoDBUrl, db.mongoDBOptions)
+    .then(() => {
+        console.log('Connected To DB');
+    })
+    .catch((err) => {
+        console.log('Not Connected To DB');
 });
-console.log('DB Connected....');
 };
+connectDB();
 
 
 // creating connection to postgressqlDB
 
-connectDB();
 
 //creating app
 const app = express();

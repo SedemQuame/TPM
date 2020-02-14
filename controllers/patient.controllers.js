@@ -5,37 +5,34 @@ require('dotenv').config({ path: __dirname + './../.env' });
 // node modules
 
 // custom models
-const patientmodel = require('../models/patient.models');
+const patientSchema = require('../models/patient.models');
+const db = require('./config/db.config');
+const dbTable = require(`./controllers/dbtable.controllers`);
+
 
 //================================== creating HTTP handler methods ==================================//
 // create new patient
 exports.createNewPatient = (req, res) => {
-     patientmodel.create({
-        id: `cvx` ,
-        name: `sdf`,
-        address: `s`,
-        birth_date: null,
-        gender: `123`,
-        contact_by: `dsdf`,
-        phone: `asd`,
-        race: `asdef`,
-        languages: `lang`,
-        employment_status: `gang`,
-        email_address: `man`,
-        marital_status: `nal`
-   }).then((n)=>{
-        res.send({info: `Created a new patient.`});
-   }).catch((err) => {
-        res.send({info: `Unable to create a new patient.`});
-   });
+    if(req.body.dbID == 1){
+        dbTable.insertIntoDb(db.con1, req);
+    }else if(req.body.dbID == 2){
+        dbTable.insertIntoDb(db.con2, req);
+    }else if(req.body.dbID == 3){
+        dbTable.insertIntoDb(db.con3, req);
+    }
 };
 
 // get patient result
 exports.getPatientRecord = (req, res) => {
-    patient.find().then().catch();
+
+};
+
+// update patient result
+exports.updatePatientData = (req, res) => {
+
 };
 
 // delete patient result
 exports.deletePatientRecord = (req, res) => {
-    patient.findByIdAndRemove().then().catch();
+
 };
