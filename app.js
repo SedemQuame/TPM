@@ -30,7 +30,7 @@ mongoose.connect(db.mongoDBUrl, db.mongoDBOptions)
         console.log('Not Connected To DB');
 });
 };
-connectDB();
+// connectDB();
 
 
 // creating connection to postgressqlDB
@@ -45,8 +45,8 @@ app.use(bodyParser.urlencoded({extended: true}));
 
 
 //====================================== requiring list routes ========================================//
-require('./routes/patient.routes')(app);
-// require('./routes/election.route')(app);
+require('./routes/patient.route')(app);
+require('./routes/problem.route')(app);
 
 // define a simple route
 app.get('/', (req, res) => {

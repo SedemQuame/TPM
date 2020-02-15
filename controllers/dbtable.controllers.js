@@ -7,7 +7,7 @@ exports.createDbSetup = (con) => {
         }else{
             console.log(`Connected to database`);
             let createPatientTable = `CREATE TABLE IF NOT EXISTS patients (
-                id VARCHAR(20) NOT NULL PRIMARY KEY,
+                id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
                 name VARCHAR(255) NOT NULL,
                 address VARCHAR(255) NOT NULL,
                 birth_date Date NOT NULL,
@@ -26,7 +26,7 @@ exports.createDbSetup = (con) => {
             });
     
             let createProblemTable = `CREATE TABLE IF NOT EXISTS problem (
-                problem_id VARCHAR(20) NOT NULL PRIMARY KEY,
+                id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
                 user_id VARCHAR(255) NOT NULL,
                 diagnosed_illness VARCHAR(255) NOT NULL,
                 prescribed_medications VARCHAR(255) NOT NULL,
@@ -39,42 +39,63 @@ exports.createDbSetup = (con) => {
               });
     
             //   closing connection
-            con.end(() => {
-                // The connection has been closed
-                console.log(`The connection closed.`);
-            });
+            // con.end(() => {
+            //     // The connection has been closed
+            //     console.log(`The connection closed.`);
+            // });
         }
     });
 };
 
 // inserting data into the database
-exports.insertIntoDb = (con, req) => {
-    console.log(`Inserting data into the database.`);
-    con.connect((err) => {
-        if(err){
-            throw err;
-        }else{
-            console.log(`Connected to database`);
-            let insertIntoPatientTable = `
-                INSERT INTO patients
-                ('name','address','birth_date','gender','contact_by','phone','race','languages','employment_status','email_address','marital_status')
-                VALUES
-                (${req.body.name},${req.body.address},${req.body.birth_date},${req.body.gender},${req.body.contact_by},${req.body.phone},
-                ${req.body.race},${req.body.languages},${req.body.employment_status},${req.body.email_address},${req.body.marital_status});
-            `;
+exports.insertIntoDb = (con, req, res) => {
+    // con.connect((err) => {
+    //     if(err){
+    //         res.send({err: `Error ${err}.`});
+    //         // throw err;
+    //     }else{
+    if(con){
+        console.log(`Connected to database`);
+        let dbName = "";
 
-            con.query(insertIntoPatientTable, function (err, result) {
-              if (err) throw err;
-              console.log("Patients table created");
-            });
-    
-            //   closing connection
-            con.end(() => {
-                // The connection has been closed
-                console.log(`The connection closed.`);
-            });
+        // (\`${req.query.name}\`,\`${req.query.address}\`,\`${req.query.birth_date}\`
+        if(req.query.dbID == "1"){
+            dbName = 'medmetricusa';
+        }else if(req.query.dbID == "2"){
+            dbName = 'medmetricgh';
+        }else if(req.query.dbID == "3"){
+            dbName = 'medmetricchina';
         }
-    });
+
+        let insertIntoPatientTable = `
+            INSERT INTO ${dbName}.\`patients\`
+            (\`name\`, \`address\`,\`birth_date\`,\`gender\`,\`contact_by\`,\`phone\`,\`race\`,\`languages\`,\`employment_status\`,\`email_address\`,\`marital_status\`)
+            VALUES
+            ("${req.query.name}", "${req.query.address}", "${req.query.birth_date}", "${req.query.gender}","${req.query.contact_by}","${req.query.phone}",
+            "${req.query.race}","${req.query.languages}","${req.query.employment_status}","${req.query.email_address}","${req.query.marital_status}");
+        `;
+
+        console.log(insertIntoPatientTable);
+            
+        con.query(insertIntoPatientTable, function (err, result) {
+            if (err){
+                throw err;
+            }else{
+            console.log("Patients table created");
+            res.send({msg: `Added new row to the database.`});
+            }
+        });
+    }else{
+        res.send({msg: `Cannot insert into db.`});
+    }
+    
+            // //   closing connection
+            // con.end(() => {
+            //     // The connection has been closed
+            //     console.log(`The connection closed.`);
+            // });
+    //     }
+    // });
 };
 
 // selecting data from the database

@@ -1,15 +1,16 @@
 // jshint esversion:6
+const problem = require('../controllers/problem.controllers');
+
 // ================================ creating list application route ===================================//
 module.exports = app => {
-    const problem = require('../controllers/problem.controllers');
 
     // //========================================== Creating HTTP Methods ============================================//
 
-    app.route('/createProblemRecord').post(problem.createNewPatient);    
+    app.route('/createProblemRecord').post(problem.createNewProblem);    
 
-    app.route('/getPatientProblemRecord').post(problem.getPatientData);
+    app.route('/getPatientProblemRecord').post(problem.getPatientProblemHistory);
 
-    app.route('/updatePatientProblemsRecord').post(problem.updatePatientData);
+    app.route('/updatePatientProblemsRecord').post(problem.updatePatientHistory);
 
-    app.route('/deletePatientProblemsRecord').post(problem.removePatient);
+    app.route('/deletePatientProblemsRecord').post(problem.removePatientHistory);
 };
