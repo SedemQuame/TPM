@@ -73,3 +73,32 @@ exports.removeAllPatientsRecords = (req, res) => {
         dbTable.deleteAllFromDb(db.con3, req, res);
     }
 };
+
+exports.createMedProfile = (req, res) => {
+    res.render(__dirname + `./../views/createMedProfile.view.ejs`);
+};
+
+exports.createPatientMedRecord = (req, res) => {
+    res.render(__dirname + `./../views/createPatientMedRecord.view.ejs`);
+};
+
+exports.createPatientProfile = (req, res) => {
+    res.render(__dirname + `./../views/createPatientProfile.view.ejs`);
+};
+
+exports.home = (req, res) => {
+    res.render(__dirname + `./../views/homepage.view.ejs`);
+};
+
+
+exports.medLogin = (req, res) => {
+    res.render(__dirname + `./../views/medLogin.view.ejs`);
+};
+
+exports.modifyMedRecord = (req, res) => {
+    res.render(__dirname + `./../views/modfiyMedRecord.view.ejs`);
+};
+
+exports.viewMedRecord = (req, res) => {
+    res.render(__dirname + `./../views/viewPatientMedRecord.view.ejs`);
+};

@@ -42,6 +42,10 @@ const app = express();
 // parse requests of content-type - application/json
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
+// serving static files in express
+app.use(express.static(__dirname + '/public'));
+// app.use(express.static('views'));
+
 
 
 //====================================== requiring list routes ========================================//
@@ -50,7 +54,8 @@ require('./routes/problem.route')(app);
 
 // define a simple route
 app.get('/', (req, res) => {
-    res.json({info: `Node.js, Express, MongoDB and Postgres API.`});
+    // res.json({info: `Node.js, Express, MongoDB and Postgres API.`});
+    res.render(__dirname + `/views/createMedProfile.view.ejs`);
 });
 
 // listening port

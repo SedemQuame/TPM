@@ -4,7 +4,8 @@ const patient = require('./../controllers/patient.controllers');
 
 module.exports = app => {
 
-    // //========================================== Creating HTTP Methods ============================================//
+    //========================================== Creating HTTP Methods ============================================//
+    //========================================== POST ============================================//
 
     app.route('/createPatientRecord').post(patient.createNewPatientRecord);    
 
@@ -15,4 +16,10 @@ module.exports = app => {
     app.route('/deletePatientRecord').post(patient.removePatientById);
 
     app.route('/deleteAllPatientsRecord').post(patient.removeAllPatientsRecords);
+
+    //========================================== GET ============================================//
+    app.route('/home').get(patient.home);
+
+    app.route('/med').get(patient.createMedProfile);
+
 };
