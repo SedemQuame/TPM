@@ -12,8 +12,7 @@ const dbTable = require(`./../controllers/dbtable.controllers`);
 
 //================================== creating HTTP handler methods ==================================//
 // create new patient
-exports.createNewPatient = (req, res) => {
-    // res.send({id: `${req.query.dbID}`});
+exports.createNewPatientRecord = (req, res) => {
     if(req.query.dbID == 1){
         console.log(db.con1);
         dbTable.insertIntoDb(db.con1, req, res);
@@ -24,17 +23,53 @@ exports.createNewPatient = (req, res) => {
     }
 };
 
-// // get patient result
-// exports.getPatientRecord = (req, res) => {
+// get patient result
+exports.getPatientRecord = (req, res) => {
+        if(req.query.dbID == 1){
+            dbTable.selectFromDb(db.con1, req, res);
+        }else if(req.query.dbID == 2){
+            dbTable.selectFromDb(db.con2, req, res);
+        }else if(req.query.dbID == 3){
+            dbTable.selectFromDb(db.con3, req, res);
+        }else{
+            // getting patient data from all databases.
+        }
+};
 
-// };
+// update patient result
+exports.updatePatientDataById = (req, res) => {
+    if(req.query.dbID == 1){
+        dbTable.updateRowInDb(db.con1, req, res);
+    }else if(req.query.dbID == 2){
+        dbTable.updateRowInDb(db.con2, req, res);
+    }else if(req.query.dbID == 3){
+        dbTable.updateRowInDb(db.con3, req, res);
+    }
+};
 
-// // update patient result
-// exports.updatePatientData = (req, res) => {
+// delete patient result
+exports.removePatientById = (req, res) => {
+    if(req.query.dbID == 1){
+        dbTable.deleteRowInDbById(db.con1, req, res);
+    }else if(req.query.dbID == 2){
+        dbTable.deleteRowInDbById(db.con2, req, res);
+    }else if(req.query.dbID == 3){
+        dbTable.deleteRowInDbById(db.con3, req, res);
+    }
+};
 
-// };
-
-// // delete patient result
-// exports.deletePatientRecord = (req, res) => {
-
-// };
+// delete patient result
+exports.removeAllPatientsRecords = (req, res) => {
+    if(req.query.dbID == 1){
+        dbTable.deleteAllFromDb(db.con1, req, res);
+    }else if(req.query.dbID == 2){
+        dbTable.deleteAllFromDb(db.con2, req, res);
+    }else if(req.query.dbID == 3){
+        dbTable.deleteAllFromDb(db.con3, req, res);
+    }else{
+        // getting patient data from all databases.
+        dbTable.deleteAllFromDb(db.con1, req, res);
+        dbTable.deleteAllFromDb(db.con2, req, res);
+        dbTable.deleteAllFromDb(db.con3, req, res);
+    }
+};

@@ -99,22 +99,235 @@ exports.insertIntoDb = (con, req, res) => {
 };
 
 // selecting data from the database
-exports.selectFromDb = (con, req) => {
-    console.log(`Selecting data, from the database.`);
+exports.selectFromDb = (con, req, res) => {
+    if(con){
+        console.log(`Connected to database`);
+        let dbName = "";
+
+        // (\`${req.query.name}\`,\`${req.query.address}\`,\`${req.query.birth_date}\`
+        if(req.query.dbID == "1"){
+            dbName = 'medmetricusa';
+        }else if(req.query.dbID == "2"){
+            dbName = 'medmetricgh';
+        }else if(req.query.dbID == "3"){
+            dbName = 'medmetricchina';
+        }
+
+        let selectFromPatientTable = `
+        SELECT * 
+        FROM ${dbName}.patients
+        WHERE id=${req.query.id};
+        `;
+
+        console.log(selectFromPatientTable);
+            
+        con.query(selectFromPatientTable, function (err, result) {
+            if (err){
+                throw err;
+            }else{
+            console.log("Query successful");
+            res.send({result: JSON.stringify(result)});
+            }
+        });
+    }else{
+        res.send({msg: `Query unsuccessful.`});
+    }
 };
 
 // updating data from the database
-exports.updateFromDb = (con, req) => {
+exports.updateRowInDb = (con, req, res) => {
     console.log(`Updating data, from the database`);
+    res.send({msg: `Updating data, from the database`});
+
+};
+
+// deleting data from the database
+exports.deleteRowInDbById = (con, req, res) => {
+    if(con){
+        let dbName = "";
+        if(req.query.dbID == "1"){
+            dbName = 'medmetricusa';
+        }else if(req.query.dbID == "2"){
+            dbName = 'medmetricgh';
+        }else if(req.query.dbID == "3"){
+            dbName = 'medmetricchina';
+        }
+        let deleteFromPatientTable = `
+        DELETE FROM ${dbName}.\`patients\`
+        WHERE id=${req.query.id};
+        `;
+        console.log(deleteFromPatientTable);
+        con.query(deleteFromPatientTable, function (err, result) {
+            if (err){
+                throw err;
+            }else{
+            console.log("Patients row deleted.");
+            res.send({msg: `Deleted row successfully from the database.`});
+            }
+        });
+    }else{
+        res.send({msg: `Cannot delete from db.`});
+    }
+};
+
+// deleting data from the database
+exports.deleteAllFromDb = (con, req, res) => {
+    if(con){
+        console.log(`Connected to database`);
+        let dbName = "";
+
+        if(req.query.dbID == "1"){
+            dbName = 'medmetricusa';
+        }else if(req.query.dbID == "2"){
+            dbName = 'medmetricgh';
+        }else if(req.query.dbID == "3"){
+            dbName = 'medmetricchina';
+        }
+        let deleteFromPatientTable = `
+        DELETE FROM ${dbName}.\`patients\`
+        WHERE id>-1;
+        `;
+
+        console.log(deleteFromPatientTable);
+            
+        con.query(deleteFromPatientTable, function (err, result) {
+            if (err){
+                throw err;
+            }else{
+            console.log("Patients row deleted.");
+            res.send({msg: `Deleted row successfully from the database.`});
+            }
+        });
+    }else{
+        res.send({msg: `Cannot delete from db.`});
+    }};
+
+
+    // create a new patient problem record.
+    exports.insertIntoProblemDb = (con, req, res) => {
+        if(con){
+            console.log(`Connected to database`);
+            let dbName = "";
+            if(req.query.dbID == "1"){
+                dbName = 'medmetricusa';
+            }else if(req.query.dbID == "2"){
+                dbName = 'medmetricgh';
+            }else if(req.query.dbID == "3"){
+                dbName = 'medmetricchina';
+            }
+            let insertIntoProblemDb = `
+            INSERT INTO ${dbName}.\`problem\`
+            (user_id, diagnosed_illness, prescribed_medications, birth_date, report)
+            VALUES 
+            ("${req.query.user_id}", "${req.query.diagnosed_illness}", "${req.query.prescribed_medications}", "${req.query.birth_date}", "${req.query.report}")`;
     
-};
+            console.log(insertIntoProblemDb);
+                
+            con.query(insertIntoProblemDb, function (err, result) {
+                if (err){
+                    throw err;
+                }else{
+                console.log("Patients row deleted.");
+                res.send({msg: `Inserted row successfully from the database.`});
+                }
+            });
+        }else{
+            res.send({msg: `Cannot delete from db.`});
+        }
+    };
 
-// deleting data from the database
-exports.deleteFromDb = (con, req) => {
-    console.log(`Removing data from the database.`);
-};
+    // get patient's problem record.
+    exports.getPatientProblemDataById = (con, req, res) => {
+        if(con){
+            console.log(`Connected to database`);
+            let dbName = "";
+            if(req.query.dbID == "1"){
+                dbName = 'medmetricusa';
+            }else if(req.query.dbID == "2"){
+                dbName = 'medmetricgh';
+            }else if(req.query.dbID == "3"){
+                dbName = 'medmetricchina';
+            }
+            let selectAllFromProblemDb = `
+            SELECT * 
+            FROM ${dbName}.\`problem\`
+            WHERE id=${req.query.id};
+            `;
+    
+            console.log(selectAllFromProblemDb);
+                
+            con.query(selectAllFromProblemDb, function (err, result) {
+                if (err){
+                    throw err;
+                }else{
+                console.log("Query successful.");
+                res.send(result);
+                }
+            });
+        }else{
+            res.send({msg: `Cannot delete from db.`});
+        }
+    };
 
-// deleting data from the database
-exports.deleteAllFromDb = (con, req) => {
-    console.log(`Removing all data from the database.`);
-};
+    exports.getAllPatientProblemRecords = (con, req, res) => {
+        if(con){
+            console.log(`Connected to database`);
+            let dbName = "";
+            if(req.query.dbID == "1"){
+                dbName = 'medmetricusa';
+            }else if(req.query.dbID == "2"){
+                dbName = 'medmetricgh';
+            }else if(req.query.dbID == "3"){
+                dbName = 'medmetricchina';
+            }
+            let selectAllFromProblemDb = `
+            SELECT * 
+            FROM ${dbName}.\`problem\`;
+            `;
+    
+            console.log(selectAllFromProblemDb);
+                
+            con.query(selectAllFromProblemDb, function (err, result) {
+                if (err){
+                    throw err;
+                }else{
+                console.log("Query successful.");
+                res.send({result: result});
+                }
+            });
+        }else{
+            res.send({msg: `Cannot delete from db.`});
+        }
+    };
+
+    exports.deletePatientProblemRecords = (con, req, res) => {
+        if(con){
+            console.log(`Connected to database`);
+            let dbName = "";
+            if(req.query.dbID == "1"){
+                dbName = 'medmetricusa';
+            }else if(req.query.dbID == "2"){
+                dbName = 'medmetricgh';
+            }else if(req.query.dbID == "3"){
+                dbName = 'medmetricchina';
+            }
+            let deleteFromProblemDb = `
+            DELETE
+            FROM ${dbName}.\`problem\`
+            WHERE id=${req.query.id};
+            `;
+    
+            console.log(deleteFromProblemDb);
+                
+            con.query(deleteFromProblemDb, function (err, result) {
+                if (err){
+                    throw err;
+                }else{
+                console.log("Query successful.");
+                res.send({result: result});
+                }
+            });
+        }else{
+            res.send({msg: `Cannot delete from db.`});
+        }
+    };

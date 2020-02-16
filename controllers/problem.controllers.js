@@ -12,21 +12,55 @@ const dbTable = require(`./../controllers/dbtable.controllers`);
 
 //================================== creating HTTP handler methods ==================================//
 // create new patient
-exports.createNewProblem = (req, res) => {
-
+exports.createNewProblemRecord = (req, res) => {
+    if(req.query.dbID == 1){
+        dbTable.insertIntoProblemDb(db.con1, req, res);
+    }else if(req.query.dbID == 2){
+        dbTable.insertIntoProblemDb(db.con2, req, res);
+    }else if(req.query.dbID == 3){
+        dbTable.insertIntoProblemDb(db.con3, req, res);
+    }
 };
 
 // get patient result
-exports.getPatientProblemHistory = (req, res) => {
+exports.getPatientProblemRecordById = (req, res) => {
+    if(req.query.dbID == 1){
+        dbTable.getPatientProblemDataById(db.con1, req, res);
+    }else if(req.query.dbID == 2){
+        dbTable.getPatientProblemDataById(db.con2, req, res);
+    }else if(req.query.dbID == 3){
+        dbTable.getPatientProblemDataById(db.con3, req, res);
+    }
+};
 
+exports.getAllPatientProblemRecord = (req, res) => {
+    if(req.query.dbID == 1){
+        dbTable.getAllPatientProblemRecords(db.con1, req, res);
+    }else if(req.query.dbID == 2){
+        dbTable.getAllPatientProblemRecords(db.con2, req, res);
+    }else if(req.query.dbID == 3){
+        dbTable.getAllPatientProblemRecords(db.con3, req, res);
+    }
 };
 
 // update patient result
-exports.updatePatientHistory = (req, res) => {
-
+exports.updatePatientRecordById = (req, res) => {
+    if(req.query.dbID == 1){
+        dbTable.updatePatientProblemRecords(db.con1, req, res);
+    }else if(req.query.dbID == 2){
+        dbTable.updatePatientProblemRecords(db.con2, req, res);
+    }else if(req.query.dbID == 3){
+        dbTable.updatePatientProblemRecords(db.con3, req, res);
+    }
 };
 
 // delete patient result
-exports.removePatientHistory = (req, res) => {
-
+exports.removePatientRecordById = (req, res) => {
+    if(req.query.dbID == 1){
+        dbTable.deletePatientProblemRecords(db.con1, req, res);
+    }else if(req.query.dbID == 2){
+        dbTable.deletePatientProblemRecords(db.con2, req, res);
+    }else if(req.query.dbID == 3){
+        dbTable.deletePatientProblemRecords(db.con3, req, res);
+    }
 };

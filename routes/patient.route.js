@@ -6,11 +6,13 @@ module.exports = app => {
 
     // //========================================== Creating HTTP Methods ============================================//
 
-    app.route('/createPatientRecord').post(patient.createNewPatient);    
+    app.route('/createPatientRecord').post(patient.createNewPatientRecord);    
 
-    // app.route('/getPatientRecord').post(patient.getPatientData);
+    app.route('/getPatientRecord').post(patient.getPatientRecord);
 
-    // app.route('/updatePatientRecord').post(patient.updatePatientData);
+    app.route('/updatePatientRecord').post(patient.updatePatientDataById);
 
-    // app.route('/deletePatientRecord').post(patient.removePatient);
+    app.route('/deletePatientRecord').post(patient.removePatientById);
+
+    app.route('/deleteAllPatientsRecord').post(patient.removeAllPatientsRecords);
 };
