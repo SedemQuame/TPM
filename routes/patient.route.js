@@ -20,6 +20,15 @@ module.exports = app => {
     //========================================== GET ============================================//
     app.route('/home').get(patient.home);
 
-    app.route('/med').get(patient.createMedProfile);
+    app.route('/createMedProfile').get(patient.createMedProfile);
 
+    app.route('/createPatientMedRecord').get(patient.createPatientMedRecord);
+
+    app.route('/createPatientProfile').get(patient.createPatientProfile);
+
+    app.route('/medLogin').get(patient.medLogin);
+
+    app.route('/modifyMedRecord').get(patient.modifyMedRecord);
+
+    app.route('/viewMedRecord').get(patient.viewMedRecord);
 };

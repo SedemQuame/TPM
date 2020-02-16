@@ -55,7 +55,7 @@ require('./routes/problem.route')(app);
 // define a simple route
 app.get('/', (req, res) => {
     // res.json({info: `Node.js, Express, MongoDB and Postgres API.`});
-    res.render(__dirname + `/views/createMedProfile.view.ejs`);
+    res.redirect(`/home`);
 });
 
 // listening port
