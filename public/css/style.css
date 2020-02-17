@@ -2,11 +2,49 @@
 
 body {}
 
-p {}
+p {
+    font-family: 'Roboto', sans-serif;
+    font-size: medium;
+}
 
-h1 {}
+h1,
+h2,
+h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: larger;
+}
 
 
 /* Custom Elements */
 
-#home {}
+#patientForm {
+    background-color: #f5f6fa;
+    padding-top: 1vh;
+    opacity: 0.95;
+}
+
+#patientList {
+    background-color: #f5f6fa;
+    padding-top: 1vh;
+    opacity: 0.95;
+    height: 90vh;
+    overflow-y: auto;
+}
+
+#recordviewer {
+    background-color: #f5f6fa;
+    border: 1px solid #dcdde1;
+    border-radius: 5px;
+    height: 88vh;
+    margin-top: 2vh;
+    overflow-y: auto;
+}
+
+.patientListItem {
+    border: 1px solid #353b48;
+    border-radius: 5px;
+    padding: 5px;
+    margin-bottom: 10px;
+    min-height: 45px;
+    max-height: 45px;
+}

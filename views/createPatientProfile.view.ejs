@@ -1,7 +1,84 @@
+<link rel="stylesheet" href="./css/home.css">
 </head>
 
 <body>
     <%- include('./paritals/head.partial.ejs'); -%>
         <%- include('./paritals/nav.partial.ejs'); -%>
-            <p>Creating a patient med profile.</p>
+            <!-- <div class="row"> -->
+
+            <div id="patientForm" class="col-12 offset-md-8 col-md-4">
+                <h1 class="text-center">
+                    Create new patient
+                </h1>
+                <p class="text-center">
+                    Lorem Ipsum.
+                </p>
+                <form class="form" action="/createPatientRecord" method="post">
+                    <div class="form-group">
+                        <label for="medmetricbranch">Med Branch</label>
+                        <select class="custom-select" id="medmetricbranch" name="dbID" required>
+                                    <option selected>Choose...</option>
+                                    <option value="1">USA</option>
+                                    <option value="2">GHANA</option>
+                                    <option value="3">CHINA</option>
+                                </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="fullname">FullName</label>
+                        <input type="text" class="form-control" id="fullname" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="homeaddress">Home Address</label>
+                        <input type="text" class="form-control" id="homeaddress" name="address" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="birthdate">Birth Date</label>
+                        <input type="text" class="form-control" id="birthdate" name="birth_date" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="contactby">Contact By</label>
+                        <select class="custom-select" id="contactby" name="contact_by" required>
+                                    <option selected>Choose...</option>
+                                    <option value="1">Phone</option>
+                                    <option value="2">Email</option>
+                                </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="phonenumber">Phone Number</label>
+                        <input type="number" class="form-control" id="phonenumber" name="phone" required>
+                        <small id="numberHelp" class="form-text text-muted">We'll never share your phone number with anyone else.</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="emailaddress">Email Address</label>
+                        <input type="email" class="form-control" id="emailaddress" name="email_address" required>
+                        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="races">Race</label>
+                        <select class="custom-select" id="races" name="race" required>
+                                    <option selected>Choose...</option>
+                                    <option value="Negroid">Negroid(Black)</option>
+                                    <option value="Caucasoid">Caucasoid(White)</option>
+                                    <option value="Mongoloid">Mongoloid (Oriental/Amerindian)</option>
+                                    <option value="Australoid">Australoid (Australian Aborigine and Papuan)</option>
+                                </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="languages">Languages</label>
+                        <input type="text" class="form-control" id="languages" name="languages" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="employmentstatus">Employment Status</label>
+                        <select class="custom-select" id="employmentstatus" name="employment_status" required>
+                                    <option selected>Choose...</option>
+                                    <option value="1">Unemployed/Student</option>
+                                    <option value="2">Actively Employed</option>
+                                    <option value="3">Retired</option>
+                                </select>
+                    </div>
+
+                    <input type="submit" class="btn btn-primary btn-block">Submit</input>
+                </form>
+                <!-- </div> -->
+            </div>
             <%- include('./paritals/head.partial.ejs'); -%>

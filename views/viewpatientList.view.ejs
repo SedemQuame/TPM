@@ -1,0 +1,32 @@
+<%- include('./paritals/head.partial.ejs'); -%>
+    <link rel="stylesheet" href="../public/css/home.css">
+    </head>
+
+    <body>
+        <%- include('./paritals/nav.partial.ejs'); -%>
+
+            <!-- <%= list  %> -->
+            <div id="patientList" class="container">
+                <div class="row">
+                    <% for(let i=0; i< list.length; i++){%>
+                        <div class="offset-2 col-8 patientListItem">
+                            <div class="row">
+                                <div class="col-1">
+                                    <%= (i+1) %>
+                                </div>
+                                <div class="col-4">
+                                    <%= list[i].name %>
+                                </div>
+                                <div class="col-5">
+                                    <!-- <%= JSON.stringify(list[i]) %> -->
+                                    <%= `MedicMetric Ghana` %>
+                                </div>
+                                <div class="col-2">
+                                    <a href="/viewMedRecord/2/4">View</a>
+                                </div>
+                            </div>
+                        </div>
+                        <%}%>
+                </div>
+            </div>
+            <%- include('./paritals/head.partial.ejs'); -%>

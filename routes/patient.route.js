@@ -30,5 +30,7 @@ module.exports = app => {
 
     app.route('/modifyMedRecord').get(patient.modifyMedRecord);
 
-    app.route('/viewMedRecord').get(patient.viewMedRecord);
+    app.route('/viewMedRecord/:dbID/:id').get(patient.getPatientRecord);
+    
+    app.route('/viewpatientList/:dbId').get(patient.getPatientList);
 };

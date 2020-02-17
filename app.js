@@ -41,7 +41,7 @@ const app = express();
 
 // parse requests of content-type - application/json
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.urlencoded({extended: false}));
 // serving static files in express
 app.use(express.static(__dirname + '/public'));
 // app.use(express.static('views'));

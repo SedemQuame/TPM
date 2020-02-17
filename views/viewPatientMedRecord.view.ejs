@@ -3,5 +3,57 @@
 <body>
     <%- include('./paritals/head.partial.ejs'); -%>
         <%- include('./paritals/nav.partial.ejs'); -%>
-            <p>View med records</p>
+            <div id="recordviewer" class="container">
+                <div class="row">
+                    <div class="col-12 col-md-3">
+                        <!-- patient img -->
+                        <img src="/img/avatar.svg" alt="patient_img">
+                        <p class="text-center">
+                            <%= data[0].name %>
+                        </p>
+                    </div>
+                    <div class="col-12 col-md-9">
+                        <!-- <div class="row"> -->
+                        <p>Address:
+                            <%= data[0].address %>
+                        </p>
+                        <p>Race:
+                            <%= data[0].race %>
+                        </p>
+                        <p>Contact By:
+                            <%= data[0].contact_by %>
+                        </p>
+                        <p>Phone:
+                            <%= data[0].phone %>
+                                / Email:
+                                <%= data[0].email_address %>
+                        </p>
+                        <p>Emplyment Status:
+                            <%= data[0].employment_status %>
+                        </p>
+                        <p>Marital Status:
+                            <%= data[0].marital_status %>
+                        </p>
+                        <!-- </div> -->
+                    </div>
+                    <hr>
+                    <div class="col-12">
+                        <p class="text-left">Patient Records</p>
+                        <hr>
+                        <!-- <%= JSON.stringify(records) %> -->
+                        <%for(let i = 0; i< records.length; i++){%>
+                            <p class="text-left">
+                                <b>Diagnosed Illness: </b>
+                                <%= records[i].diagnosed_illness %>
+                                    <br> <b>Prescribed medication list: </b>
+                                    <%= records[i].prescribed_medications %>
+                                        <br> <b>Doctor's notes: </b>
+                                        <%= records[i].report %>
+                                            <br>
+                            </p>
+                            <%}%>
+
+                    </div>
+                </div>
+            </div>
             <%- include('./paritals/head.partial.ejs'); -%>
