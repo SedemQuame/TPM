@@ -13,11 +13,15 @@ const dbTable = require(`./../controllers/dbtable.controllers`);
 //================================== creating HTTP handler methods ==================================//
 // create new patient
 exports.createNewProblemRecord = (req, res) => {
-    if(req.query.dbID == 1){
+
+    console.log(req.body);
+
+    
+    if(req.body.dbID == 1){
         dbTable.insertIntoProblemDb(db.con1, req, res);
-    }else if(req.query.dbID == 2){
+    }else if(req.body.dbID == 2){
         dbTable.insertIntoProblemDb(db.con2, req, res);
-    }else if(req.query.dbID == 3){
+    }else if(req.body.dbID == 3){
         dbTable.insertIntoProblemDb(db.con3, req, res);
     }
 };

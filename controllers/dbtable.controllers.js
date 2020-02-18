@@ -289,7 +289,8 @@ exports.insertIntoProblemDb = (con, req, res) => {
                 throw err;
             }else{
             console.log("Patients row deleted.");
-            res.send({msg: `Inserted row successfully from the database.`});
+            // res.send({msg: `Inserted row successfully from the database.`});
+            res.redirect('viewMedRecord/2/4');
             }
         });
     }else{
