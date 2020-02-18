@@ -34,3 +34,8 @@ body {
     min-height: 45px;
     max-height: 45px;
 }
+
+.heroimg {
+    width: 90%;
+    margin: 5% 5%;
+}

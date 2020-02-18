@@ -30,11 +30,9 @@ mongoose.connect(db.mongoDBUrl, db.mongoDBOptions)
         console.log('Not Connected To DB');
 });
 };
-// connectDB();
-
+connectDB();
 
 // creating connection to postgressqlDB
-
 
 //creating app
 const app = express();

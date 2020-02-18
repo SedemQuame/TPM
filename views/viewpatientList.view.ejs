@@ -4,7 +4,6 @@
 
     <body>
         <%- include('./paritals/nav.partial.ejs'); -%>
-
             <div id="patientList" class="container">
                 <div class="row">
                     <div class="offset-1 col-10">
@@ -50,11 +49,16 @@
                                     <%= list[i].name %>
                                 </div>
                                 <div class="col-5">
-                                    <!-- <%= JSON.stringify(list[i]) %> -->
-                                    <%= `MedicMetric Ghana` %>
+                                    <%if(dbID == 1){%>
+                                        <%='Med Metric USA'%>
+                                            <%}else if(dbID == 2){%>
+                                                <%='Med Metric GHANA'%>
+                                                    <%}else if(dbID == 3){%>
+                                                        <%='Med Metric CHINA'%>
+                                                            <%}%>
                                 </div>
                                 <div class="col-2">
-                                    <a href="/viewMedRecord/2/4">View</a>
+                                    <a href="/viewMedRecord/<%=dbID%>/<%=list[i].id%>">View</a>
                                 </div>
                             </div>
                         </div>

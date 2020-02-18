@@ -104,8 +104,6 @@ exports.selectFromDb = (con, req, res) => {
     if(con){
         console.log(`Connected to database`);
         let dbName = "";
-
-        // (\`${req.body.name}\`,\`${req.body.address}\`,\`${req.body.birth_date}\`
         if(req.params.dbID == "1"){
             dbName = 'medmetricusa';
         }else if(req.params.dbID == "2"){
@@ -133,8 +131,6 @@ exports.selectFromDb = (con, req, res) => {
             FROM ${dbName}.\`problem\`
             WHERE user_id=${req.params.id};
             `;
-            // WHERE user_id=${req.params.id};
-
     
             console.log(selectAllFromProblemDb);
                 
@@ -143,7 +139,7 @@ exports.selectFromDb = (con, req, res) => {
                     throw err;
                 }else{
                 console.log("Query successful.");
-                res.render(__dirname + `./../views/viewPatientMedRecord.view.ejs`, {data: result, records: records});
+                res.render(__dirname + `./../views/viewPatientMedRecord.view.ejs`, {data: result, records: records, dbID: req.params.dbID});
 
                 // res.send(result);
                 }
@@ -171,8 +167,6 @@ exports.selectAllFromDb = (con, req, res) => {
             dbName = 'medmetricgh';
         }else if(req.params.dbID == 3){
             dbName = 'medmetricchina';
-        }else{
-            dbName = 'medmetricusa';
         }
 
         let selectFromPatientTable = `
@@ -187,7 +181,7 @@ exports.selectAllFromDb = (con, req, res) => {
                 throw err;
             }else{
             console.log("Query successful");
-            res.render(__dirname + `./../views/viewpatientList.view.ejs`, {list: result});
+            res.render(__dirname + `./../views/viewpatientList.view.ejs`, {list: result, dbID: req.params.dbID, dbName: dbName});
         }
         });
     }else{
@@ -290,7 +284,7 @@ exports.insertIntoProblemDb = (con, req, res) => {
             }else{
             console.log("Patients row deleted.");
             // res.send({msg: `Inserted row successfully from the database.`});
-            res.redirect('viewMedRecord/2/4');
+            res.redirect(`viewMedRecord/${req.body.dbID}/${req.body.user_id}`);
             }
         });
     }else{
@@ -331,36 +325,36 @@ exports.getPatientProblemDataById = (con, req, res) => {
     }
 };
 
-exports.getAllPatientProblemRecords = (con, req, res) => {
-    if(con){
-        console.log(`Connected to database`);
-        let dbName = "";
-        if(req.body.dbID == "1"){
-            dbName = 'medmetricusa';
-        }else if(req.body.dbID == "2"){
-            dbName = 'medmetricgh';
-        }else if(req.body.dbID == "3"){
-            dbName = 'medmetricchina';
-        }
-        let selectAllFromProblemDb = `
-        SELECT * 
-        FROM ${dbName}.\`problem\`;
-        `;
+// exports.getAllPatientProblemRecords = (con, req, res) => {
+//     if(con){
+//         console.log(`Connected to database`);
+//         let dbName = "";
+//         if(req.body.dbID == "1"){
+//             dbName = 'medmetricusa';
+//         }else if(req.body.dbID == "2"){
+//             dbName = 'medmetricgh';
+//         }else if(req.body.dbID == "3"){
+//             dbName = 'medmetricchina';
+//         }
+//         let selectAllFromProblemDb = `
+//         SELECT * 
+//         FROM ${dbName}.\`problem\`;
+//         `;
 
-        console.log(selectAllFromProblemDb);
+//         console.log(selectAllFromProblemDb);
             
-        con.query(selectAllFromProblemDb, function (err, result) {
-            if (err){
-                throw err;
-            }else{
-            console.log("Query successful.");
-            return result;
-            }
-        });
-    }else{
-        res.send({msg: `Cannot delete from db.`});
-    }
-};
+//         con.query(selectAllFromProblemDb, function (err, result) {
+//             if (err){
+//                 throw err;
+//             }else{
+//             console.log("Query successful.");
+//             return result;
+//             }
+//         });
+//     }else{
+//         res.send({msg: `Cannot delete from db.`});
+//     }
+// };
 
 exports.deletePatientProblemRecords = (con, req, res) => {
     if(con){

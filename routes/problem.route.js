@@ -8,11 +8,11 @@ module.exports = app => {
 
     app.route('/createProblemRecord').post(problem.createNewProblemRecord);    
 
-    app.route('/getProblemRecordById').post(problem.getPatientProblemRecordById);
+    // app.route('/getProblemRecordById').post(problem.getPatientProblemRecordById);
 
-    app.route('/getAllPatientProblemRecord').post(problem.getAllPatientProblemRecord);
+    // app.route('/getAllPatientProblemRecord').post(problem.getAllPatientProblemRecord);
 
-    app.route('/updatePatientProblemsRecordById').post(problem.updatePatientRecordById);
+    // app.route('/updatePatientProblemsRecordById').post(problem.updatePatientRecordById);
 
-    app.route('/deletePatientProblemsRecordById').post(problem.removePatientRecordById);
+    // app.route('/deletePatientProblemsRecordById').post(problem.removePatientRecordById);
 };

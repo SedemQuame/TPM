@@ -12,11 +12,7 @@ const dbTable = require(`./../controllers/dbtable.controllers`);
 
 //================================== creating HTTP handler methods ==================================//
 // create new patient
-exports.createNewProblemRecord = (req, res) => {
-
-    console.log(req.body);
-
-    
+exports.createNewProblemRecord = (req, res) => {   
     if(req.body.dbID == 1){
         dbTable.insertIntoProblemDb(db.con1, req, res);
     }else if(req.body.dbID == 2){
@@ -26,16 +22,16 @@ exports.createNewProblemRecord = (req, res) => {
     }
 };
 
-// get patient result
-exports.getPatientProblemRecordById = (req, res) => {
-    if(req.query.dbID == 1){
-        dbTable.getPatientProblemDataById(db.con1, req, res);
-    }else if(req.query.dbID == 2){
-        dbTable.getPatientProblemDataById(db.con2, req, res);
-    }else if(req.query.dbID == 3){
-        dbTable.getPatientProblemDataById(db.con3, req, res);
-    }
-};
+// // get patient result
+// exports.getPatientProblemRecordById = (req, res) => {
+//     if(req.query.dbID == 1){
+//         dbTable.getPatientProblemDataById(db.con1, req, res);
+//     }else if(req.query.dbID == 2){
+//         dbTable.getPatientProblemDataById(db.con2, req, res);
+//     }else if(req.query.dbID == 3){
+//         dbTable.getPatientProblemDataById(db.con3, req, res);
+//     }
+// };
 
 exports.getAllPatientProblemRecord = (req, res) => {
     if(req.query.dbID == 1){
