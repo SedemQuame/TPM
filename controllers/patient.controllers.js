@@ -27,11 +27,11 @@ exports.createNewPatientRecord = (req, res) => {
 exports.getPatientList = (req, res) => {
     console.log(req.params.dbId);
     let result;    
-    if(req.params.dbId == 1){
+    if(req.params.dbID == 1){
         result = dbTable.selectAllFromDb(db.con1, req, res);        
-    }else if(req.params.dbId == 2){
+    }else if(req.params.dbID == 2){
         result = dbTable.selectAllFromDb(db.con2, req, res);        
-    }else if(req.params.dbId == 3){
+    }else if(req.params.dbID == 3){
         result = dbTable.selectAllFromDb(db.con3, req, res);        
     }
 };

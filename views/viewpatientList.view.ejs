@@ -1,15 +1,47 @@
 <%- include('./paritals/head.partial.ejs'); -%>
-    <link rel="stylesheet" href="../public/css/home.css">
+    <link rel="stylesheet" href="./../public/css/list.css">
     </head>
 
     <body>
         <%- include('./paritals/nav.partial.ejs'); -%>
 
-            <!-- <%= list  %> -->
             <div id="patientList" class="container">
                 <div class="row">
+                    <div class="offset-1 col-10">
+                        <h1 class="text-left">
+                            Patient List Viewer.
+                        </h1>
+
+                        <p class="text-left">
+                            Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Duis mollis, est non commodo luctus.
+                        </p>
+
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="/viewpatientList/1">USA</a></li>
+                                <li class="breadcrumb-item"><a href="/viewpatientList/2">GHANA</a></li>
+                                <li class="breadcrumb-item"><a href="/viewpatientList/3">CHINA</a></li>
+                            </ol>
+                        </nav>
+                    </div>
+                    <div class="offset-1 col-10 patientListItem">
+                        <div class="row">
+                            <div class="col-1">
+                                Id
+                            </div>
+                            <div class="col-4">
+                                Name
+                            </div>
+                            <div class="col-5">
+                                Branch Database
+                            </div>
+                            <div class="col-2">
+                                View Records
+                            </div>
+                        </div>
+                    </div>
                     <% for(let i=0; i< list.length; i++){%>
-                        <div class="offset-2 col-8 patientListItem">
+                        <div class="offset-1 col-10 patientListItem">
                             <div class="row">
                                 <div class="col-1">
                                     <%= (i+1) %>

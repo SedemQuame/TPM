@@ -131,7 +131,7 @@ exports.selectFromDb = (con, req, res) => {
             let selectAllFromProblemDb = `
             SELECT * 
             FROM ${dbName}.\`problem\`
-            WHERE user_id=1;
+            WHERE user_id=${req.params.id};
             `;
             // WHERE user_id=${req.params.id};
 
@@ -161,6 +161,8 @@ exports.selectAllFromDb = (con, req, res) => {
     if(con){
         console.log(`Connected to database`);
         let dbName = "";
+        console.log(req.params.dbID);
+        
 
         // (\`${req.body.name}\`,\`${req.body.address}\`,\`${req.body.birth_date}\`
         if(req.params.dbID == 1){
@@ -170,7 +172,7 @@ exports.selectAllFromDb = (con, req, res) => {
         }else if(req.params.dbID == 3){
             dbName = 'medmetricchina';
         }else{
-            dbName = 'medmetricgh';
+            dbName = 'medmetricusa';
         }
 
         let selectFromPatientTable = `

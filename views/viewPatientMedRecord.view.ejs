@@ -41,19 +41,80 @@
                         <p class="text-left">Patient Records</p>
                         <hr>
                         <!-- <%= JSON.stringify(records) %> -->
-                        <%for(let i = 0; i< records.length; i++){%>
-                            <p class="text-left">
-                                <b>Diagnosed Illness: </b>
-                                <%= records[i].diagnosed_illness %>
-                                    <br> <b>Prescribed medication list: </b>
-                                    <%= records[i].prescribed_medications %>
-                                        <br> <b>Doctor's notes: </b>
-                                        <%= records[i].report %>
-                                            <br>
-                            </p>
-                            <%}%>
-
+                        <%if(records.length == 0 ){%>
+                            <p class="text-center">Patient has, no recorded medical history.</p>
+                            <%}else{%>
+                                <%for(let i = 0; i< records.length; i++){%>
+                                    <p class="text-left">
+                                        <b>Diagnosed Illness: </b>
+                                        <%= records[i].diagnosed_illness %>
+                                            <br> <b>Prescribed medication list: </b>
+                                            <%= records[i].prescribed_medications %>
+                                                <br> <b>Doctor's notes: </b>
+                                                <%= records[i].report %>
+                                                    <br>
+                                    </p>
+                                    <%}%>
+                                        <%}%>
                     </div>
+
+                    <!-- Create new patient record. -->
+                    <div class="col-12">
+                        <h1 class="text-center">Create new patient record</h1>
+                    </div>
+                    <div class="col-3">
+                        <!-- Button trigger modal -->
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                            Launch demo modal
+                        </button>
+                    </div>
+
+
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title text-center" id="exampleModalLabel">Create New Patient Record.</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+                                </div>
+                                <div class="modal-body">
+                                    <form class="form" action="/createProblemRecord" method="POST">
+                                        <input type="hidden" name="user_id" value="<%=data[0].id%>">
+                                        <div class="form-group">
+                                            <label for="diagnosis">Diagnosed Illness</label>
+                                            <input type="text" name="diagnosed_illness" class="form-control" id="diagnosis" aria-describedby="diagnosisHelp">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="prescribedMed">Prescribed Medication</label>
+                                            <input type="text" name="prescribed_medications" class="form-control" id="prescribedMed">
+                                        </div>
+                                        <!-- <div class="form-group">
+                                            <label for="exampleInputEmail1">Diagnosed Illness</label>
+                                            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                                            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                                        </div> -->
+                                        <div class="form-group">
+                                            <label for="patientBday">Birth Date</label>
+                                            <input type="text" name="birth_date" class="form-control" id="patientBday">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="exampleInputPassword1">Doctor's Notes</label>
+                                            <textarea class="form-control" name="report" id="" cols="30" rows="5"></textarea>
+                                        </div>
+                                        <input type="submit" class="btn btn-primary btn-block" value="Submit">
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
+            <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+            <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
             <%- include('./paritals/head.partial.ejs'); -%>

@@ -21,10 +21,11 @@ h3 {
     background-color: #f5f6fa;
     padding-top: 1vh;
     opacity: 0.95;
+    max-height: 90vh;
+    overflow-y: auto;
 }
 
 #patientList {
-    background-color: #f5f6fa;
     padding-top: 1vh;
     opacity: 0.95;
     height: 90vh;
@@ -41,7 +42,8 @@ h3 {
 }
 
 .patientListItem {
-    border: 1px solid #353b48;
+    background-color: #f5f6fa;
+    border: 1px solid #eef4ff;
     border-radius: 5px;
     padding: 5px;
     margin-bottom: 10px;
