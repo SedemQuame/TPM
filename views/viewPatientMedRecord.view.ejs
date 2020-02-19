@@ -7,41 +7,49 @@
                 <div class="row">
                     <!-- <%= JSON.stringify(data) %> -->
                     <%if(data.length > 0){%>
+                        <div class="col-12">
+                            <h1 class="text-center">Citizen's Profile</h1>
+                        </div>
                         <div class="col-12 col-md-3">
                             <!-- patient img -->
                             <img src="/img/avatar.svg" alt="patient_img">
                             <p class="text-center">
-                                <%= data[0].name %>
+                                <b>Citizen Name: </b>
+                                <span class="text-capitalize">
+                                    <%= data[0].name %>
+                                </span>
                             </p>
                         </div>
                         <div class="col-12 col-md-9">
                             <!-- <div class="row"> -->
-                            <p>Address:
+                            <p><b>Address:</b>
                                 <%= data[0].address %>
                             </p>
-                            <p>Race:
+                            <p><b>Race:</b>
                                 <%= data[0].race %>
                             </p>
-                            <p>Contact By:
+                            <p><b>Contact By:</b>
                                 <%= data[0].contact_by %>
                             </p>
-                            <p>Phone:
+                            <p><b>Phone:</b>
                                 <%= data[0].phone %>
-                                    / Email:
+                                    /
+                                    <b>Email:</b>
                                     <%= data[0].email_address %>
                             </p>
-                            <p>Emplyment Status:
+                            <p><b>Employment Status:</b>
                                 <%= data[0].employment_status %>
                             </p>
-                            <p>Marital Status:
+                            <p><b>Marital Status:</b>
                                 <%= data[0].marital_status %>
                             </p>
                             <!-- </div> -->
                         </div>
                         <hr>
                         <div class="col-12">
-                            <p class="text-left">Patient Records</p>
                             <hr>
+                            <h2 class="text-center">Medical Records From National Health Insurance Authority(N.H.I.A)</h2>
+
                             <!-- <%= JSON.stringify(records) %> -->
                             <%if(records.length == 0 ){%>
                                 <p class="text-center">Patient has, no recorded medical history.</p>
@@ -62,13 +70,13 @@
 
                         <!-- Create new patient record. -->
                         <div class="col-12">
-                            <h1 class="text-center">Create new patient record</h1>
+                            <h2 class="text-center">Add new health record.</h2>
                         </div>
-                        <div class="col-3">
+                        <div class="offset-md-5 col-md-2">
                             <!-- Button trigger modal -->
-                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-                                                Launch demo modal
-                                            </button>
+                            <button type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#exampleModal">
+                                                Add
+                            </button>
                         </div>
 
 
@@ -120,4 +128,4 @@
             <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
             <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
             <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-            <%- include('./paritals/head.partial.ejs'); -%>
+            <%- include('./paritals/footer.partial.ejs'); -%>

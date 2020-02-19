@@ -11,6 +11,7 @@ module.exports = app => {
 
     app.route('/getPatientRecord').post(patient.getPatientRecord);
 
+
     app.route('/updatePatientRecord').post(patient.updatePatientDataById);
 
     app.route('/deletePatientRecord').post(patient.removePatientById);

@@ -1,0 +1,45 @@
+<link rel="stylesheet" href="./css/home.css">
+</head>
+
+<body class="registration-page">
+    <%- include('./paritals/head.partial.ejs'); -%>
+        <%- include('./paritals/nav.partial.ejs'); -%>
+            <!-- login portion -->
+            <div class="container">
+                <%if(errorMSG != null){%>
+                    <% if(errorMSG != `Logout successful.`) { %>
+                        <div class="alert alert-danger" role="alert">
+                            <%= errorMSG %>
+                        </div>
+                        <% }else{ %>
+                            <div class="alert alert-success" role="alert">
+                                <%= errorMSG %>
+                            </div>
+                            <%}%>
+                                <%}%>
+
+                                    <div class="row">
+                                        <div id="patientForm" class="col-12 offset-md-4 col-md-4 login_or_sign_container">
+                                            <h1 class="text-center">Login</h1>
+                                            <p class="text-center">
+                                                Login today and contribute to <br>improving the lives of <b>homies</b> around you,
+                                            </p>
+                                            <!-- login forms -->
+                                            <form action="/login" method="POST">
+                                                <div class="form-group"><label for="">Email address</label><input type="text" class="form-control" name="email_address"></div>
+                                                <div class="form-group"><label for="">Password</label><input type="password" class="form-control" name="password"></div>
+                                                <div class="form-group">
+                                                    <input type="Submit" value="Submit" class="btn btn-primary btn-block"></div>
+                                            </form>
+                                            <!-- show signup button -->
+                                            <p class="text-center">
+                                                <a class="" href="/user_signup">
+                             Don't have an account? <br> Sign up
+                        </a>
+                                            </p>
+                                        </div>
+
+                                    </div>
+
+            </div>
+            <%- include('./paritals/footer.partial.ejs'); -%>

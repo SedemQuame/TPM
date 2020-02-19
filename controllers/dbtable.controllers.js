@@ -325,37 +325,6 @@ exports.getPatientProblemDataById = (con, req, res) => {
     }
 };
 
-// exports.getAllPatientProblemRecords = (con, req, res) => {
-//     if(con){
-//         console.log(`Connected to database`);
-//         let dbName = "";
-//         if(req.body.dbID == "1"){
-//             dbName = 'medmetricusa';
-//         }else if(req.body.dbID == "2"){
-//             dbName = 'medmetricgh';
-//         }else if(req.body.dbID == "3"){
-//             dbName = 'medmetricchina';
-//         }
-//         let selectAllFromProblemDb = `
-//         SELECT * 
-//         FROM ${dbName}.\`problem\`;
-//         `;
-
-//         console.log(selectAllFromProblemDb);
-            
-//         con.query(selectAllFromProblemDb, function (err, result) {
-//             if (err){
-//                 throw err;
-//             }else{
-//             console.log("Query successful.");
-//             return result;
-//             }
-//         });
-//     }else{
-//         res.send({msg: `Cannot delete from db.`});
-//     }
-// };
-
 exports.deletePatientProblemRecords = (con, req, res) => {
     if(con){
         console.log(`Connected to database`);

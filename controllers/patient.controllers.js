@@ -112,7 +112,3 @@ exports.medLogin = (req, res) => {
 exports.modifyMedRecord = (req, res) => {
     res.render(__dirname + `./../views/modfiyMedRecord.view.ejs`);
 };
-
-// exports.viewMedRecord = (req, res) => {
-//     res.render(__dirname + `./../views/viewPatientMedRecord.view.ejs`);
-// };

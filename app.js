@@ -5,11 +5,24 @@ require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
+const fileupload = require('express-fileupload');
 const mysql = require('mysql');
+const {Client} = require(`pg`);
+const sqlite3 = require('sqlite3').verbose();
+
+
+
 
 // custom models
 const db = require('./config/db.config');
 const dbTable = require(`./controllers/dbtable.controllers`);
+
+const dbLite = new sqlite3.Database('./DVLA.db', (err) => {
+  if (err) {
+    return console.error(err.message);
+  }
+  console.log('Connected to the in-memory SQlite database.');
+});
 
 // creating MySQL, connection and creating db table if not exists.
 // usa db
@@ -33,6 +46,11 @@ mongoose.connect(db.mongoDBUrl, db.mongoDBOptions)
 connectDB();
 
 // creating connection to postgressqlDB
+const client = new Client({
+    connectionString: db.pgConUrl
+});
+
+// client.connect();
 
 //creating app
 const app = express();
@@ -42,6 +60,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 // serving static files in express
 app.use(express.static(__dirname + '/public'));
+app.use(fileupload());
 // app.use(express.static('views'));
 
 
@@ -49,6 +68,8 @@ app.use(express.static(__dirname + '/public'));
 //====================================== requiring list routes ========================================//
 require('./routes/patient.route')(app);
 require('./routes/problem.route')(app);
+require('./routes/users.routes')(app);
+
 
 // define a simple route
 app.get('/', (req, res) => {

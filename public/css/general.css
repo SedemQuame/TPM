@@ -1,0 +1,212 @@
+/* ================TAGS=============== */
+
+body {
+    background: #fff;
+}
+
+h1 {
+    font-family: 'Rubik', sans-serif;
+    font-size: 17px;
+}
+
+h2 {
+    font-family: 'Rubik', sans-serif;
+    font-size: 15px;
+}
+
+th {
+    font-family: 'Rubik', sans-serif;
+    font-size: 13px;
+}
+
+div,
+p,
+td {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 12px;
+    padding: 0;
+}
+
+nav {
+    height: 9vh;
+}
+
+
+/* ================CLASS=============== */
+
+.header {
+    padding: 10px 0;
+}
+
+.list-group {
+    list-style: disc inside;
+}
+
+.list-group-item {
+    display: list-item;
+}
+
+.find-more {
+    text-align: right;
+}
+
+.label-theme {
+    background: #3AAA64;
+    font-size: 14px;
+    padding: .3em .7em .3em;
+    color: #fff;
+    border-radius: .25em;
+}
+
+.label a {
+    color: inherit;
+}
+
+.persons_picture {
+    width: 100%;
+    height: 200px;
+}
+
+.user_data_field {
+    min-height: 30px;
+    margin-top: 10px;
+    margin-bottom: 25px;
+}
+
+.all-users-img {
+    max-height: 200px;
+    min-height: 200px;
+    width: 100%;
+}
+
+.commentbox {
+    border: 1px solid #d3d3d3;
+    border-radius: 5px;
+    width: 74%;
+    margin: 10px 0;
+    margin-left: 0px;
+    background-color: #d3d3d3;
+}
+
+.pane {
+    height: 88vh;
+    margin-top: 2vh;
+    margin-bottom: 2vh;
+    padding: 0;
+}
+
+.infoContainer {
+    border: 1px solid #d3d3d3;
+    margin: 10px;
+    border-radius: 5px;
+    min-height: 45vh;
+    max-height: 85vh;
+    overflow-y: auto;
+    padding: 1%;
+}
+
+.infoContainer2 {
+    margin: 10px;
+    border-radius: 5px;
+    padding: 1%;
+}
+
+.updatePreview {
+    /* border: 1px solid #d3d3d3; */
+    border-radius: 5px;
+    width: 98%;
+    overflow-y: auto;
+}
+
+.infoItem {
+    border: 1px solid #d3d3d3;
+    width: 96%;
+    margin: 10px 2%;
+}
+
+.homieProfileUrl {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+.login_or_sign_container {
+    margin-top: 4%;
+    margin-bottom: 4%;
+    background-color: #fff;
+    border-radius: 2px;
+}
+
+.dashboardIcons {
+    width: 25px;
+    height: 25px;
+}
+
+
+/* ================IDs=============== */
+
+
+/* #uploader {
+    width: 100%;
+} */
+
+#donation_form {
+    margin-top: 40px;
+}
+
+#more_user_information {
+    margin-bottom: 30px;
+}
+
+.form-control,
+.custom-select {
+    border: 1px solid #000000;
+    border-radius: 0px;
+    padding: 0;
+    height: 28px;
+    font-size: 11px;
+}
+
+textarea {
+    line-height: none;
+}
+
+.pwsd_text {
+    font-size: 11px;
+}
+
+.font-weight-bolder {
+    padding-left: 0;
+}
+
+.congratulatory-msg {
+    height: 75vh;
+    font-size: 24px;
+    padding: 30vh;
+}
+
+#poster {
+    max-height: 55vh;
+    border: 1px solid #d3d3d3;
+    margin: 10px;
+    border-radius: 5px;
+    overflow-y: auto;
+    padding: 1%;
+}
+
+.registration-page {
+    background-image: url('https://images.pexels.com/photos/1657935/pexels-photo-1657935.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500');
+    background-repeat: no-repeat;
+    background-size: cover;
+    /* min-height: 100vh; */
+    max-width: 100vw;
+    padding: 0;
+    margin: 0;
+    overflow-y: auto;
+}
+
+.about-img {
+    height: auto;
+    width: 100%;
+    margin-bottom: 2%;
+}
